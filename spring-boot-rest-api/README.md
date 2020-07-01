@@ -1,7 +1,6 @@
 ---
 title: REST API
 categories: Spring
-author: Kim Bosung
 team-blog: [java-book-study](https://lucky-java.tistory.com/)
 ---
 
