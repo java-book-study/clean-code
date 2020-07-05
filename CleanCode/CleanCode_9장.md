@@ -7,8 +7,8 @@
     1. ​실패하는 단위 테스트를 작성할 때까지 실제 코드를 작성하지 않는다.
     2. 컴파일은 실패하지 않으면서 실행이 실패하는 정도로만 단위 테스트를 작성한다.
     3. 현재 실패하는 테스트를 통과할 정도로만 실제 코드를 작성한다.  
-<br>
-    - 하지만 이렇게 코드를 작성한다면, 실제 코드를 전부 테스트하는 테스트 케이스가 나온다.  
+
+    - 하지만 이렇게 코드를 작성한다면, 실제 코드를 전부 테스트하는 테스트 케이스가 나온다.         
     - 실제 코드와 맞먹을 정도로 방대한 테스트 코드는 심각한 관리 문제를 유발하기도 한다.
 
 - **깨끗한 테스트 코드 유지하기**
@@ -27,7 +27,6 @@
      - 가독성을 높이기 위해서는 3가지, **명료성, 단순성, 풍부한 표현력**이 필요하다.
 
     SerializedPageResponderTest.java
-    <small>(직렬화된 페이지 응답자 테스트)</small>
      ```java
     SimpleResponse response;
 
@@ -100,7 +99,7 @@
     
     3. **이중 표준**
 
-    - 테스트 환경과 런타임 환경은 다르게 자원이 제한적일 가능성이 낮다.  
+    - 테스트 환경은 런타임 환경과 다르게 자원이 제한적일 가능성이 낮다.  
     즉, 테스트 코드는 단순하고 간결하고, 표현력이 풍부해야하지만 효율적일 필요는 없다.
     - 런타임 환경에서는 아래 코드를 StringBuffer를 사용하는 코드로 바꿔야 하지만, 테스트 환경에서는 바꿀 필요가 없다.
     ``` java
@@ -124,7 +123,7 @@
     중복된 코드가 생기는 것이 거슬린다면, Template Method 패턴을 이용하여 중복을 줄일 수 있다.
     
     SerializedPageResponderTest.java
-    ```java
+    ``` java
     public void testGetPageHierarchyAsXml() throws Exception {
         givenPages("PageOne", "PageOne.ChildOne", "PageTwo");
         whenRequestIsIssued("root", "type:pages");
@@ -168,25 +167,25 @@
     ```
 
     ```java
-    public void LastDay_31_To_30_AddMonth_Is_30() {
+    public void LastDay_31_30_AddMonth_Is_30() {
         SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
         SerialDate serialDate = SerialDate.addMonths(1, d1);
         // serialDate가 2004년, 6월, 30일이 맞는지 확인하는 assert문
     }
 
-    public void LastDay_31_To_31_AddMonth_Is_31() {
+    public void LastDay_31_31_AddMonth_Is_31() {
         SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
         SerialDate serialDate = SerialDate.addMonths(2, d1);
         // serialDate가 2004년, 7월, 31일이 맞는지 확인하는 assert문
     }
 
-    public void LastDay_31_To_30_To_31_AddMonth_Is_30() {
+    public void LastDay_31_30_31_AddMonth_Is_30() {
         SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
         SerialDate serialDate = SerialDate.addMonths(1, SerialDate.addMonths(1, d1));
         // serialDate가 2004년, 7월, 30일이 맞는지 확인하는 assert문
     }
     ```
-    - assert문이 여러개 있는것은 문제가 되지 않는다.  
+    - assert문이 여러 개인건 문제가 되지 않는다.  
     하지만, 한 테스트 함수에서 여러 개념을 테스트하는 것은 지양하자.
 
     - 결론은, **개념당 assert 문을 최소로 줄이고 테스트 함수 하나는 개념 하나만 테스트하라**
