@@ -167,19 +167,19 @@
     ```
 
     ```java
-    public void LastDay_31_30_AddMonth_Is_30() {
+    public void addMonthTest_LastDay_31_30_Is_30() {
         SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
         SerialDate serialDate = SerialDate.addMonths(1, d1);
         // serialDate가 2004년, 6월, 30일이 맞는지 확인하는 assert문
     }
 
-    public void LastDay_31_31_AddMonth_Is_31() {
+    public void addMonthTest_LastDay_31_31_Is_31() {
         SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
         SerialDate serialDate = SerialDate.addMonths(2, d1);
         // serialDate가 2004년, 7월, 31일이 맞는지 확인하는 assert문
     }
 
-    public void LastDay_31_30_31_AddMonth_Is_30() {
+    public void addMonthTest_LastDay_31_30_31_Is_30() {
         SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
         SerialDate serialDate = SerialDate.addMonths(1, SerialDate.addMonths(1, d1));
         // serialDate가 2004년, 7월, 30일이 맞는지 확인하는 assert문
