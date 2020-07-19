@@ -1,0 +1,6 @@
+# Directories #
+/bin/
+/target/
+
+# vsCode #
+/.settings/
